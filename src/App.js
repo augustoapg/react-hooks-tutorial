@@ -1,9 +1,10 @@
 import React from "react";
-import Home from "../src/Home";
+import Home from "./Home";
+import Speakers from "./Speakers";
 
 const App = ({ pageName }) => {
 	if (pageName === "Home") return <Home></Home>;
-	if (pageName === "Speakers") return <></>;
+	if (pageName === "Speakers") return <Speakers></Speakers>;
 	return <div>Not Found</div>;
 };
 
