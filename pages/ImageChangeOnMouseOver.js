@@ -12,7 +12,7 @@ const ImageChangeOnMouseOver = () => {
 			&nbsp; &nbsp;
 			<ImageToggleOnMouseOver
 				primaryImg="static/bw/Speaker-1124.jpg"
-				secondaryImg="static/Speaker-1124.jpg"
+				secondaryImg="static/speaker/Speaker-1124.jpg"
 				alt="Speaker-1124"
 			/>
 		</div>

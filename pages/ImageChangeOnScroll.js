@@ -9,7 +9,7 @@ const ImageChangeOnScroll = () => {
 					<div id={key}>
 						<ImageToggleOnScroll
 							primaryImg={`static/bw/Speaker-${key}.jpg`}
-							secondaryImg={`static/Speaker-${key}.jpg`}
+							secondaryImg={`static/speaker/Speaker-${key}.jpg`}
 						/>
 					</div>
 				);
