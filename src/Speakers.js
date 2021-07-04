@@ -1,4 +1,11 @@
-import React, { useState, useEffect, useContext, useReducer } from "react";
+import React, {
+	useState,
+	useEffect,
+	useContext,
+	useReducer,
+	useCallback,
+	useMemo,
+} from "react";
 import { Header } from "./Header";
 import { Menu } from "./Menu";
 import SpeakerData from "./SpeakerData";
@@ -35,7 +42,7 @@ const Speakers = ({}) => {
 		};
 	}, []);
 
-	const heartFavoriteHandler = (e, favoriteValue) => {
+	const heartFavoriteHandler = useCallback((e, favoriteValue) => {
 		e.preventDefault();
 		const sessionId = parseInt(e.target.attributes["data-sessionid"].value);
 
@@ -53,7 +60,7 @@ const Speakers = ({}) => {
 		// 		return item;
 		// 	})
 		// );
-	};
+	}, []);
 
 	const handleChangeSaturday = () => {
 		setSpeakingSaturday(!speakingSaturday);
@@ -63,9 +70,9 @@ const Speakers = ({}) => {
 		setSpeakingSunday(!speakingSunday);
 	};
 
-	const speakerListFiltered = isLoading
-		? []
-		: speakerList
+	const newSpeakersList = useMemo(
+		() =>
+			speakerList
 				.filter(
 					({ sat, sun }) =>
 						(speakingSaturday && sat) || (speakingSunday && sun)
@@ -78,7 +85,11 @@ const Speakers = ({}) => {
 						return 1;
 					}
 					return 0;
-				});
+				}),
+		[speakingSaturday, speakingSunday, speakerList]
+	);
+
+	const speakerListFiltered = isLoading ? [] : newSpeakersList;
 
 	if (isLoading) {
 		return <div>Loading...</div>;
